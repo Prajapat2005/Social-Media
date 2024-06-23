@@ -1,4 +1,4 @@
-Built React front-end website 'Social Media' with create and delete post functionalities based on user interactions, all the css are imported through Bootstrap and updated through css-modules . Also advanced Concepts like useRef, useEffect,  UseReducer, Context Api,etc are used inorder to make the code business-oriented and readable.
+Built React front-end website 'Social Media' with create and delete post functionalities based on user interactions, all the css are imported through Bootstrap and updated through css-modules . Also advanced Concepts like useRef, useEffect,  useReducer, useEffect, Context Api,etc and also fetchning data from surver or send data to the server are used inorder to make the code business-oriented and readable.
 
 # React + Vite
 

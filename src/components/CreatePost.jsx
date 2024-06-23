@@ -5,7 +5,7 @@ const CreatePost = () => {
 
     const { addPost } = useContext(PostList);
 
-    const userIDElement = useRef();
+    const userIdElement = useRef();
     const postTitleElement = useRef();
     const postBodyElement = useRef();
     const reactionsElement = useRef();
@@ -14,19 +14,32 @@ const CreatePost = () => {
     const handleSubmit = (event) => {
         event.preventDefault(); /* do not submit to surver or local host */
 
-        const userID = userIDElement.current.value;
+        const userId = userIdElement.current.value;
         const postTitle = postTitleElement.current.value;
         const postBody = postBodyElement.current.value;
         const reactions = reactionsElement.current.value;
         const tags = tagsElement.current.value.split(" ");
 
-        addPost(userID, postTitle, postBody, reactions, tags);
-
-        userIDElement.current.value = "";
+        userIdElement.current.value = "";
         postTitleElement.current.value = "";
         postBodyElement.current.value = "";
         reactionsElement.current.value = "";
         tagsElement.current.value = "";
+
+        /* submit data to server only if that user id is present on server */
+        fetch('https://dummyjson.com/posts/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                title: postTitle,
+                body: postBody,
+                reactions: reactions,
+                userId: userId,
+                tags: tags,
+            })
+        })
+            .then(res => res.json())
+            .then(postObj => addPost(postObj));
 
     };
 
@@ -35,7 +48,7 @@ const CreatePost = () => {
             <form className="create-post" onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="id" className="form-label">User ID</label>
-                    <input ref={userIDElement} type="text" className="form-control" id="id" placeholder="Your user ID" />
+                    <input ref={userIdElement} type="text" className="form-control" id="id" placeholder="Your user ID" />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>

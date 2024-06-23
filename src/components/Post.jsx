@@ -7,7 +7,7 @@ const Post = ({ post }) => {
     const { deletePost } = useContext(PostList);
 
     return (
-        <>
+        <> <center>
             <div className="card post-card" style={{}}>
                 {/* <img src="..." className="card-img-top" alt="..." /> */}
                 <div className="card-body">
@@ -23,6 +23,7 @@ const Post = ({ post }) => {
                     </div>
                 </div>
             </div>
+        </center>
         </>
     );
 }
