@@ -63,30 +63,30 @@ const PostListProvider = ({ children }) => {
             }
         });
     }, [dispatchPostList]);
+
     /*  depend only on dispatchPostList if it change then funciton will re-render  else useCallback prevent depetePost to re-render or to create another reference*/
 
 
-    const [spinnerCurrState, setSpinnerCurrState] = useState(false);  /* for spinner */
+    const [spinnerCurrState, setSpinnerCurrState] = useState(false);  /*  for spinner  */
 
-    /* fetch data from api ant it fetches only when first time the app wiil run and povider execute */
     useEffect(() => {
         setSpinnerCurrState(true);
 
-        /* const controller = new AbortController();  currently not in use
+        /* const controller = new AbortController();   use to block api fetching if tab is change
         const signal = controller.signal; */
 
-        fetch('https://dummyjson.com/posts'/* , { signal } */)
+        fetch('https://dummyjson.com/posts',/*  { signal } */)
             .then(res => res.json())
             .then(data => {
                 addInitialPost(data.posts);
                 setSpinnerCurrState(false);
             });
 
-        /* return () => {
-            controller.abort();
-            console.log("Tab change");
-              clean up api call if we are at different components then api request not call 
-        } */
+        /*  return () => {
+             controller.abort();
+             console.log("Tab change");
+              clean up api call if we are at different components then api request not call  
+         } */
     }, []);
 
     return (
@@ -94,7 +94,7 @@ const PostListProvider = ({ children }) => {
             postList: postList,
             addPost: addPost,
             deletePost: deletePost,
-            spinnerCurrState: spinnerCurrState, /* passing spinner state to all children */
+            spinnerCurrState: spinnerCurrState,  /* passing spinner state to all children */
             /* addInitialPost: addInitialPost, */
             /* already done by provider once when it execute no need to pass to childere */
         }}>
