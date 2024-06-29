@@ -9,11 +9,11 @@ const PostList = () => {
     const { postList, spinnerCurrState } = useContext(PostListData);
 
     return (
-        <>
+        <div className="post-container">
             {spinnerCurrState == true && <LoadingSpiner />}
             {spinnerCurrState == false && postList.length === 0 && <WelcomeMessage></WelcomeMessage>}
             {spinnerCurrState == false && postList.map((post) => (<Post key={post.id} post={post} />))}
-        </>
+        </div>
     );
 }
 

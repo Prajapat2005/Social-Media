@@ -19,7 +19,7 @@ const Post = ({ post }) => {
                     <p className="card-text" >{post.body}</p>
                     {post.tags.map((tag) => (<span key={tag} className="badge text-bg-primary tag">{`# ${tag}`}</span>))}
                     <div className="alert alert-success reaction" role="alert">
-                        This Post have been reacted by {`${post.reactions}`} people.
+                        This Post have been reacted by {Math.floor(Math.random() * 10)} people.
                     </div>
                 </div>
             </div>

@@ -2,17 +2,32 @@
   display: flex;
 }
 
+.header {
+  width: 90%;
+  margin-left: 10%;
+  position: fixed;
+
+}
+
 .content {
   width: 100%;
 }
 
 .sidebar {
-  min-height: 100vh;
+  height: 100%;
+  position: fixed;
+  z-index: 2;
+}
+
+.post-container {
+  margin-top: 100px;
+  margin-left: 200px;
 }
 
 .post-card {
   width: 30rem;
   margin: 20px;
+  z-index: -1;
 }
 
 .tag {
@@ -26,8 +41,8 @@
 
 .create-post {
   width: 80%;
-  margin-top: 50px;
-  margin-left: 10%;
+  margin-top: 100px;
+  margin-left: 20%;
 }
 
 .welcome-message {
